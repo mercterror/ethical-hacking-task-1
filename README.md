@@ -1,25 +1,34 @@
-# Legal Scope and Isolated Lab
+cd ~/ethical-hacking-task-1
 
-**Track:** Ethical Hacking  
-**Level:** Beginner  
-**Target:** OWASP Juice Shop
+cat > README.md <<'EOF'
+# Ethical Hacking Task 1 – Legal Scope and Isolated Lab
 
-## Project Overview
-This project establishes a local practice environment for learning ethical hacking and web application security.
+## Overview
+An isolated ethical hacking environment using Docker and OWASP Juice Shop for authorized security testing.
 
-## Topology
-Linux Host → Docker Runtime → Internal Docker Network (`ethical-lab`) → OWASP Juice Shop
+## Lab Details
+- OS: Linux
+- Container: juice-shop-lab
+- Application: OWASP Juice Shop
+- Docker Network: ethical-lab
+- Network Type: Internal
+- Target: http://127.0.0.1:3000
 
-The application is published on the host's loopback interface. The actual network configuration must be verified before claiming that the lab is isolated.
+## Network Topology
+Linux Host → Docker Runtime → Internal Docker Network → OWASP Juice Shop
 
 ## Scope
-Only the locally controlled Juice Shop instance is authorized for testing.
+Testing is restricted to the locally hosted Juice Shop application.
 
-## Safety
-Unauthorized systems, public networks, destructive testing, and denial-of-service activities are excluded.
+## Rules of Engagement
+See [RULES_OF_ENGAGEMENT.md](RULES_OF_ENGAGEMENT.md).
 
 ## Evidence
-The `evidence/` folder contains screenshots of the local application and network verification.
+- evidence/lab-running.png
+- evidence/network-isolation.png
 
-## Completion
-The lab is considered complete after setup, isolation verification, documentation, and evidence capture.
+## Cleanup
+Stop the container:
+
+```bash
+sudo docker stop juice-shop-lab
